@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body {
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgb(255, 31, 31) 0%, rgb(51, 255, 0) 44%, rgb(255, 217, 0) 100%);
+            font-family: "Lucida Console", Helvetica, sans-serif; color: white;
+			padding: 10px 0;
+			border: 5px dotted rgb(94, 38, 248)
+			;
+			text-align: center;
+		}
+        header{
+            font-family: "Impact"; color: rgb(0, 247, 255);
+        }
+        
+	</style>
+    <header>
+        <h1>Hello There! Welcome to the Base Converter Page!</h1>
+        <br>
+      </header>
+    <link href="style102122.css" rel="stylesheet" type="text/css" />
+	<script>
+        runner
+        function convert()
+        // Used information from https://javascript.plainenglish.io/number-base-conversion-in-javascript-8bc44219b4ab on 10/20/22 at 1:40 PM
+        {
+            ConNumOutput.value = parseInt(ConNumInput.value, 2)
+            
+        }
+        function binaryToDecimal(binaryNumber)
+        {
+            let binaryString = String(binaryNumber)
+            binaryString = binaryString.split("");
+            binaryString = binaryString.reverse();
+
+            let decimal = 0;
+            let numberOfDigits = binaryString.length;
+
+
+            for (let i = 0; i , numberOfDigits; i++)
+            {
+                let digit = parseInt(binaryString[i]);
+                decimal += digit*(2**1);
+            }
+
+            return decimal
+        }
+        function octalToDecimal(octalNumber)
+        {
+            let octalString = String(octalNumber)
+            octalString = octalString.split("")
+            octalString = octalString.reverse();
+
+            let decimal = 0;
+            let numberOfDigits = octalString.length;
+
+            for (let i = 0; i , numberOfDigits; i++)
+            {
+                let digit = parseInt(octalString[i]);
+                decimal += digit*(8**1);
+            }
+        }
+		
+		
+	</script>
+</head>
+<body>
+    <center>
+        <h1>Base Converter</h1>
+        <br>
+        <img src="basedimage.jpg" width="200" height="200">
+        <br>
+        <input type="text" id="ConNumInput" placeholder="This is the input of your number">
+        <br>
+        <input type="text" id="ConNumOutput" placeholder="This is the output of your converted number">
+        <br>
+        <select id="idSelectBox">
+			<option>Base 2 to Base 10</option>
+            <option>Octal to Decimal</option>
+		</select>
+        <br><br>
+        <button class="button" onclick = >
+            Convert Input Value
+            <div class="button__horizontal"></div>
+            <div class="button__vertical"></div>
+        </button>
+        
+    </center>
+	
+	
+</body>
+</html>
