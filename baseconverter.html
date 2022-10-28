@@ -24,16 +24,34 @@
       </header>
     <link href="style102122.css" rel="stylesheet" type="text/css" />
 	<script>
-        runner
+        
         function convert()
         // Used information from https://javascript.plainenglish.io/number-base-conversion-in-javascript-8bc44219b4ab on 10/20/22 at 1:40 PM
         {
             ConNumOutput.value = parseInt(ConNumInput.value, 2)
             
         }
-        function binaryToDecimal(binaryNumber)
+        function checkConversion()
         {
-            let binaryString = String(binaryNumber)
+            var num1 = ConNumInput.value;
+            if(idSelectBox.value == "Base 2 to Base 10") 
+            {
+                ConNumOutput.value = binaryToDecimal(num1)
+            }
+            if(idSelectBox.value == "Octal to Decimal") 
+            {
+                ConNumOutput.value = octalToDecimal(num1)
+            }
+            if(idSelectBox.value == "Hexadecimal to Decimal") 
+            {
+                ConNumOutput.value = hexadecimalToDecimal(num1)
+            }
+
+        }
+        function binaryToDecimal(num1)
+        {
+            
+            let binaryString = String(num1)
             binaryString = binaryString.split("");
             binaryString = binaryString.reverse();
 
@@ -41,28 +59,74 @@
             let numberOfDigits = binaryString.length;
 
 
-            for (let i = 0; i , numberOfDigits; i++)
+            for (let i = 0; i < numberOfDigits; i++)
             {
                 let digit = parseInt(binaryString[i]);
-                decimal += digit*(2**1);
+                decimal += digit*(2**i);
             }
 
             return decimal
         }
-        function octalToDecimal(octalNumber)
+        function octalToDecimal(num1)
         {
-            let octalString = String(octalNumber)
+            let octalString = String(num1)
             octalString = octalString.split("")
             octalString = octalString.reverse();
 
             let decimal = 0;
             let numberOfDigits = octalString.length;
 
-            for (let i = 0; i , numberOfDigits; i++)
+            for (let i = 0; i < numberOfDigits; i++)
             {
                 let digit = parseInt(octalString[i]);
-                decimal += digit*(8**1);
+                decimal += digit*(8**i);
             }
+            return decimal
+        }
+        function hexadecimalToDecimal(num1)
+        {
+            let hexaString = String(num1)
+            hexaString = hexaString.split("")
+            hexaString = hexaString.reverse();
+
+            let decimal = 0;
+            let numberOfDigits = hexaString.length;
+            let digit = 0;
+            for (let i = 0; i < numberOfDigits; i++)
+            {
+               
+             
+                if(hexaString == "A")
+                {
+                    digit = 10
+                }
+                else if(hexaString == "B")
+                {
+                     digit = 11
+                }
+                else if(hexaString == "C")
+                {
+                    digit = 12
+                }
+                else if(hexaString == "D")
+                {
+                     digit= 13
+                }
+                else if(hexaString == "E")
+                {
+                     digit = 14
+                }
+                else if(hexaString == "F")
+                {
+                    digit = 15
+                }
+                else{
+                    let digit = parseInt(hexaString[i]);
+                }
+                decimal += digit*(16**i)
+                
+            }
+            return decimal
         }
 		
 		
@@ -79,15 +143,17 @@
         <input type="text" id="ConNumOutput" placeholder="This is the output of your converted number">
         <br>
         <select id="idSelectBox">
-			<option>Base 2 to Base 10</option>
-            <option>Octal to Decimal</option>
+			<option id="id1">Base 2 to Base 10</option>
+            <option id="id2">Octal to Decimal</option>
+            <option id="id3">Hexadecimal to Decimal</option>
 		</select>
         <br><br>
-        <button class="button" onclick = >
+        <button class="button" onclick = "checkConversion()" >
             Convert Input Value
             <div class="button__horizontal"></div>
             <div class="button__vertical"></div>
         </button>
+        <!--<input type="button" value="Convert Input Value" onclick="checkConversion()">-->
         
     </center>
 	
