@@ -46,6 +46,19 @@
             {
                 ConNumOutput.value = hexadecimalToDecimal(num1)
             }
+            if(idSelectBox.value == "Base 10 to Base 2") 
+            {
+                ConNumOutput.value = decimalToBinary(num1)
+            }
+            if(idSelectBox.value == "Decimal to octal") 
+            {
+                ConNumOutput.value = decimalToOctal(num1)
+            }
+            if(idSelectBox.value == "Decimal to hexadecimal") 
+            {
+                ConNumOutput.value = deciToHexi(num1)
+            }
+
 
         }
         function binaryToDecimal(num1)
@@ -96,27 +109,27 @@
             {
                
              
-                if(hexaString == "A")
+                if(hexaString[i] == "A")
                 {
                     digit = 10
                 }
-                else if(hexaString == "B")
+                else if(hexaString[i] == "B")
                 {
                      digit = 11
                 }
-                else if(hexaString == "C")
+                else if(hexaString[i] == "C")
                 {
                     digit = 12
                 }
-                else if(hexaString == "D")
+                else if(hexaString[i] == "D")
                 {
                      digit= 13
                 }
-                else if(hexaString == "E")
+                else if(hexaString[i] == "E")
                 {
                      digit = 14
                 }
-                else if(hexaString == "F")
+                else if(hexaString[i] == "F")
                 {
                     digit = 15
                 }
@@ -128,7 +141,74 @@
             }
             return decimal
         }
-		
+        function decimalToBinary(num1)
+        {
+            let binaryString = String(num1)
+            binaryString = binaryString.split("");
+            binaryString = binaryString.reverse();
+
+            let decimal = 0;
+            let numberOfDigits = binaryString.length;
+
+
+            for (let i = 0; i < numberOfDigits; i++)
+            {
+                decimal *= 2
+                let digit = parseInt(binaryString[i]);
+                decimal += digit*(2**i);
+            }
+
+            return decimal
+        }
+		function decimalToOctal(num1)
+        {
+
+        }
+        function deciToHexi(num1)
+        {
+            let hexaString = String(num1)
+            hexaString = hexaString.split("");
+            hexaString = hexaString.reverse();
+
+            let decimal = 0;
+            let numberOfDigits = hexaString.length;
+            hexanswer = ""
+            while(decimal != 0)
+            {
+                let remainder = num1 % 16
+                if(remainder == 10)
+                {
+                    remainder = "A"
+                }
+                if(remainder == 11)
+                {
+                    remainder = "B"
+                }
+                if(remainder == 12)
+                {
+                    remainder = "C"
+                }
+                if(remainder == 13)
+                {
+                    remainder = "D"
+                }
+                if(remainder == 14)
+                {
+                    remainder = "E"
+                }
+                if(remainder == 15)
+                {
+                    remainder = "F"
+                }
+                else{
+                    let digit = parseInt(hexaString[i]);
+                }
+                remainder = hexanswer
+                decimal = hexanswer
+                hexanswer = hexanswer.reverse()
+            }
+            return hexanswer
+        }
 		
 	</script>
 </head>
@@ -146,6 +226,9 @@
 			<option id="id1">Base 2 to Base 10</option>
             <option id="id2">Octal to Decimal</option>
             <option id="id3">Hexadecimal to Decimal</option>
+            <option id="id4">Base 10 to Base 2</option>
+            <option id="id5">Decimal to octal</option>
+            <option id="id6">Decimal to hexadecimal</option>
 		</select>
         <br><br>
         <button class="button" onclick = "checkConversion()" >
